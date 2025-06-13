@@ -1,0 +1,471 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Sports API",
+    "description": "API for managing sports data",
+    "version": "1.0.0"
+  },
+  "host": "sports-api-soiq.onrender.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Volleyball",
+      "description": "Operations related to volleyball teams"
+    },
+    {
+      "name": "Soccer",
+      "description": "Operations related to soccer teams"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/volleyball/": {
+      "get": {
+        "tags": [
+          "Volleyball"
+        ],
+        "description": "Retrieve all volleyball teams",
+        "responses": {
+          "200": {
+            "description": "A list of volleyball teams."
+          },
+          "400": {
+            "description": "Internal server error."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Volleyball"
+        ],
+        "description": "Create a new volleyball team",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "volleyball team data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Team Name"
+                },
+                "record": {
+                  "type": "string",
+                  "example": "30-2-3"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "New City, State"
+                },
+                "players": {
+                  "type": "number",
+                  "example": 23
+                },
+                "colors": {
+                  "type": "string",
+                  "example": "Blue, Black"
+                },
+                "headCoach": {
+                  "type": "string",
+                  "example": "New Coach Name"
+                },
+                "streak": {
+                  "type": "number",
+                  "example": 2
+                }
+              },
+              "required": [
+                "name",
+                "record",
+                "location",
+                "players",
+                "colors",
+                "headCoach",
+                "streak"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Team created successfully."
+          },
+          "400": {
+            "description": "Invalid team data."
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/volleyball/{id}": {
+      "get": {
+        "tags": [
+          "Volleyball"
+        ],
+        "description": "Retrieve a volleyball team by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the volleyball team"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volleyball team found."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Team not found."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Volleyball"
+        ],
+        "description": "Update an existing volleyball team",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the volleyball team"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated volleyball team data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Updated Team Name"
+                },
+                "record": {
+                  "type": "string",
+                  "example": "30-2-3"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "New City, State"
+                },
+                "players": {
+                  "type": "number",
+                  "example": 23
+                },
+                "colors": {
+                  "type": "string",
+                  "example": "Blue, Black"
+                },
+                "headCoach": {
+                  "type": "string",
+                  "example": "New Coach Name"
+                },
+                "streak": {
+                  "type": "number",
+                  "example": 2
+                }
+              },
+              "required": [
+                "name",
+                "record",
+                "location",
+                "players",
+                "colors",
+                "headCoach",
+                "streak"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Team updated successfully."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Team not found."
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Volleyball"
+        ],
+        "description": "Delete a volleyball team",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the volleyball team to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Team deleted successfully."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Team not found."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/soccer/": {
+      "get": {
+        "tags": [
+          "Soccer"
+        ],
+        "description": "Retrieve all soccer teams",
+        "responses": {
+          "200": {
+            "description": "A list of soccer teams."
+          },
+          "400": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Soccer"
+        ],
+        "description": "Create a new soccer team",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Soccer team data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Team Name"
+                },
+                "record": {
+                  "type": "string",
+                  "example": "12-2-2"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "Updated City, State"
+                },
+                "players": {
+                  "type": "number",
+                  "example": 23
+                },
+                "colors": {
+                  "type": "string",
+                  "example": "Red, Black"
+                },
+                "headCoach": {
+                  "type": "string",
+                  "example": "Updated Coach Y"
+                },
+                "streak": {
+                  "type": "number",
+                  "example": 3
+                }
+              },
+              "required": [
+                "name",
+                "record",
+                "location",
+                "players",
+                "colors",
+                "headCoach",
+                "streak"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Team created successfully."
+          },
+          "400": {
+            "description": "Invalid team data."
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        }
+      }
+    },
+    "/soccer/{id}": {
+      "get": {
+        "tags": [
+          "Soccer"
+        ],
+        "description": "Retrieve a single soccer team by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the soccer team"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Soccer team found."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Team not found."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Soccer"
+        ],
+        "description": "Update an existing soccer team",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the soccer team"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated soccer team data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Updated Team Name"
+                },
+                "record": {
+                  "type": "string",
+                  "example": "12-2-2"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "Updated City, State"
+                },
+                "players": {
+                  "type": "number",
+                  "example": 23
+                },
+                "colors": {
+                  "type": "string",
+                  "example": "Red, Black"
+                },
+                "headCoach": {
+                  "type": "string",
+                  "example": "Updated Coach Y"
+                },
+                "streak": {
+                  "type": "number",
+                  "example": 3
+                }
+              },
+              "required": [
+                "name",
+                "record",
+                "location",
+                "players",
+                "colors",
+                "headCoach",
+                "streak"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Team updated successfully."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Team not found."
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Soccer"
+        ],
+        "description": "Delete a soccer team by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the soccer team"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Team deleted successfully."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Team not found."
+          }
+        }
+      }
+    }
+  }
+}

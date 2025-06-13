@@ -1,0 +1,44 @@
+{
+  "name": "sports-api",
+  "version": "1.0.0",
+  "description": "API for School's Final Project",
+  "homepage": "https://github.com/BraxtonGoode/Sports-API#readme",
+  "bugs": {
+    "url": "https://github.com/BraxtonGoode/Sports-API/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BraxtonGoode/Sports-API.git"
+  },
+  "license": "ISC",
+  "author": "Braxton, Emmanuel",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "swagger": "node swagger.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1",
+    "validatorjs": "^3.22.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.1",
+    "globals": "^16.2.0",
+    "prettier": "^3.5.3"
+  }
+}
