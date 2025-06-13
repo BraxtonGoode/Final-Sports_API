@@ -1,7 +1,6 @@
 const mongoDb = require('../DB/connect.js');
 const objectId = require('mongodb').ObjectId;
 
-
 const getAllUsers = async (req, res) => {
   try {
     const db = await mongoDb.getDb().collection('User').find();
@@ -38,7 +37,6 @@ const createUser = async (req, res) => {
       position: req.body.position,
       username: req.body.username,
     };
-
 
     const response = await mongoDb.getDb().collection('User').insertOne(user);
     res.header('Content-Type', 'application/json');
@@ -86,10 +84,34 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const createOrFindUser = async (profile) => {
+  const db = mongoDb.getDb().collection('User');
+
+  const username = profile.username || profile.login;
+
+  const existingUser = await db.findOne({ username });
+
+  if (existingUser) {
+    return existingUser;
+  }
+
+  const newUser = {
+    firstName: profile.displayName?.split(' ')[0] || 'First',
+    lastName: profile.displayName?.split(' ')[1] || 'Last',
+    position: 'member', // Default position
+    username: username,
+  };
+
+  const result = await db.insertOne(newUser);
+  newUser._id = result.insertedId;
+  return newUser;
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser,
+  createOrFindUser
 };

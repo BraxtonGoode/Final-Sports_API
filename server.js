@@ -4,6 +4,7 @@ const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
+const userController = require('./controllers/userController.js');
 require('dotenv').config();
 
 const app = express();
@@ -39,9 +40,13 @@ passport.use(
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
-    (accessToken, refreshToken, profile, done) => {
-      // Here you would typically save the user to your database
-      return done(null, profile);
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        const user = await userController.findOrCreateUser(profile);
+        return done(null, user);
+      } catch (err) {
+        return done(err, null);
+      }
     }
   )
 );
@@ -73,12 +78,6 @@ app.get(
   }
 );
 
-app.get('/debug-session', (req, res) => {
-  res.json({
-    sessionUser: req.session.user,
-    passportUser: req.session.passport?.user
-  });
-});
 
 // Routes
 app.use('/', require('./routes'));
