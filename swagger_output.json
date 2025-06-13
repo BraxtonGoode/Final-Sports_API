@@ -5,7 +5,7 @@
     "description": "API for managing sports data",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "final-sports-api.onrender.com/",
   "basePath": "/",
   "tags": [
     {
@@ -30,7 +30,7 @@
     }
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/login": {
