@@ -21,7 +21,8 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "swagger": "node swagger.js"
+    "swagger": "node swagger.js",
+    "jest": "jest"
   },
   "dependencies": {
     "body-parser": "^2.2.0",
@@ -43,6 +44,8 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
     "globals": "^16.2.0",
-    "prettier": "^3.5.3"
+    "jest": "^30.0.0",
+    "prettier": "^3.5.3",
+    "supertest": "^7.1.1"
   }
 }

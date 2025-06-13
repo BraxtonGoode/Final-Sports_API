@@ -36,7 +36,7 @@ router.get(
     #swagger.responses[200] = {
       description: 'Volleyball team found.'
     }
-    #swagger.responses[404] = {
+    #swagger.responses[400] = {
       description: 'Team not found.'
     }
   */

@@ -8,7 +8,7 @@ const getAllTeams = async (req, res) => {
     res.header('Content-Type', 'application/json');
     res.status(200).json(VolleyballTeams);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching teams', error });
+    res.status(400).json({ message: 'Error fetching teams', error });
   }
 };
 
@@ -25,7 +25,7 @@ const getTeamById = async (req, res) => {
     res.header('Content-Type', 'application/json');
     res.status(200).json(db);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching team', error });
+    res.status(400).json({ message: 'Error fetching team', error });
   }
 };
 
