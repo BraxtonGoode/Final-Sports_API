@@ -5,7 +5,7 @@
     "description": "API for managing sports data",
     "version": "1.0.0"
   },
-  "host": "final-sports-api.onrender.com/",
+  "host": "final-sports-api.onrender.com",
   "basePath": "/",
   "tags": [
     {
