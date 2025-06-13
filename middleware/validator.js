@@ -25,6 +25,26 @@ const saveTeam = (req, res, next) => {
   });
 };
 
+const saveUser = (req, res, next) => {
+  const validationRule = {
+    firstName: 'required|string',
+    lastName: 'required|string',
+    position: 'required|string',
+  };
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err,
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 const validateId = (req, res, next) => {
   const id = req.params.id;
 
@@ -41,4 +61,5 @@ const validateId = (req, res, next) => {
 module.exports = {
   saveTeam,
   validateId,
+  saveUser,
 };

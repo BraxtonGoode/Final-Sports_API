@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const volleyballController = require('../controllers/volleyballController.js');
 const { saveTeam, validateId } = require('../middleware/validator');
+const { isAuthenticated, checkAuthenticated } = require('../middleware/authenticated.js');
 
 // GET all volleyball teams
 router.get(
@@ -45,6 +46,8 @@ router.get(
 // POST a new volleyball team
 router.post(
   '/',
+  isAuthenticated,
+  checkAuthenticated,
   saveTeam,
   /* 
     #swagger.tags = ['Volleyball']
@@ -78,6 +81,8 @@ router.post(
 router.put(
   '/:id',
   validateId,
+  isAuthenticated,
+  checkAuthenticated,
   saveTeam,
   /* 
     #swagger.tags = ['Volleyball']
@@ -116,6 +121,8 @@ router.put(
 router.delete(
   '/:id',
   validateId,
+  isAuthenticated,
+  checkAuthenticated,
   /* 
     #swagger.tags = ['Volleyball']
     #swagger.description = 'Delete a volleyball team'
