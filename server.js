@@ -4,7 +4,7 @@ const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
-const userController = require('./controllers/userController.js');
+// const userController = require('./controllers/userController.js');
 require('dotenv').config();
 
 const app = express();
@@ -41,12 +41,14 @@ passport.use(
       callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
     async (accessToken, refreshToken, profile, done) => {
-      try {
-        const user = await userController.findOrCreateUser(profile);
-        return done(null, user);
-      } catch (err) {
-        return done(err, null);
-      }
+      return done(null, profile);
+
+      // try {
+      //   const user = await userController.findOrCreateUser(profile);
+      //   return done(null, user);
+      // } catch (err) {
+      //   return done(err, null);
+      // }
     }
   )
 );
