@@ -42,7 +42,8 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        const user = await userController.findOrCreateUser(profile);
+        console.log('GitHub profile:', profile);
+        const user = await userController.createOrFindUser(profile);
         return done(null, user);
       } catch (err) {
         return done(err, null);

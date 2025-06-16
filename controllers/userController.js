@@ -85,6 +85,7 @@ const deleteUser = async (req, res) => {
 };
 
 const createOrFindUser = async (profile) => {  
+  console.log('Creating or finding user with profile:', profile);
   const db = mongoDb.getDb().collection('User');
 
   const username = profile.username || profile.login;
