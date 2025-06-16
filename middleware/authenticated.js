@@ -40,7 +40,7 @@ const checkAuthenticated = async (req, res, next) => {
       });
     }
 
-    req.user = user; // optional: attach found user to request object
+    req.user = user; 
     next();
   } catch (error) {
     res.status(500).json({

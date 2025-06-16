@@ -84,28 +84,28 @@ const deleteUser = async (req, res) => {
   }
 };
 
-// const createOrFindUser = async (profile) => {  
-//   const db = mongoDb.getDb().collection('User');
+const createOrFindUser = async (profile) => {  
+  const db = mongoDb.getDb().collection('User');
 
-//   const username = profile.username || profile.login;
+  const username = profile.username || profile.login;
 
-//   const existingUser = await db.findOne({ username });
+  const existingUser = await db.findOne({ username });
 
-//   if (existingUser) {
-//     return existingUser;
-//   }
+  if (existingUser) {
+    return existingUser;
+  }
 
-//   const newUser = {
-//     firstName: profile.displayName?.split(' ')[0] || 'First',
-//     lastName: profile.displayName?.split(' ')[1] || 'Last',
-//     position: 'member', // Default position
-//     username: username,
-//   };
+  const newUser = {
+    firstName: profile.displayName?.split(' ')[0] || 'First',
+    lastName: profile.displayName?.split(' ')[1] || 'Last',
+    position: 'member', // Default position
+    username: username,
+  };
 
-//   const result = await db.insertOne(newUser);
-//   newUser._id = result.insertedId;
-//   return newUser;
-// };
+  const result = await db.insertOne(newUser);
+  newUser._id = result.insertedId;
+  return newUser;
+};
 
 module.exports = {
   getAllUsers,
@@ -113,5 +113,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  // createOrFindUser
+  createOrFindUser
 };
